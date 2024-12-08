@@ -11,11 +11,11 @@ async function Page() {
   // This site will have ID of 5
   projects = projects.filter((project) => project.id !== 5);
   return (
-    <section className="flex flex-col gap-8 h-full w-full items-center justify-center text-center text-white p-8 xs:p-4 max-w-screen-lg">
+    <section className="flex flex-col gap-8 h-full w-full items-center justify-center text-center text-white ">
       <h1 className="text-2xl">PROJECTS</h1>
       <h2 className="text-xl">CHECK OUT SOME OF THE THINGS I HAVE BUILT:</h2>
       <div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 mx-auto">
           {projects.map((project) => (
             <NormalCard
               key={project.id}
