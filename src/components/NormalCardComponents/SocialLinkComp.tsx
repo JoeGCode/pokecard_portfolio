@@ -15,7 +15,7 @@ export default function SocialLinkComp({ link }: { link: SocialLink }) {
     <Link
       href={link.link}
       target="_blank"
-      className="flex justify-start items-center gap-2 hover:bg-black/20"
+      className="flex p-2 justify-start items-center gap-2 hover:bg-black/20"
     >
       <div className="flex items-center justify-center">{link.name}</div>
       <div

@@ -11,7 +11,7 @@ function SocialLinks({ links }: { links: SocialLink[] }) {
       link.type === "github"
   );
   return (
-    <div className="w-full p-2 bg-gray-200 grid grid-cols-3 text-black text-sm">
+    <div className="w-full bg-gray-200 grid grid-cols-3 text-black text-sm">
       {links.map((link) => (
         <SocialLinkComp key={link.id} link={link} />
       ))}
