@@ -1,8 +1,13 @@
 import NormalCard from "@/components/NormalCard";
 import image from "../../public/images/hero_image.png";
 import MovesLink from "@/components/NormalCardComponents/MovesLink";
+import { SocialLink } from "@/data/types";
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch(
+    "https://joegcode.github.io/api/portfolio/data/socialLinks.json"
+  );
+  const links: SocialLink[] = await response.json();
   return (
     <div className="w-full flex flex-1 flex-col items-center justify-center p-2 overflow-hidden">
       <NormalCard
@@ -11,7 +16,7 @@ export default function Home() {
         image={image}
         number="001"
         showMiniStats={true}
-        showSocialLinks={true}
+        socialLinks={links}
         aboutText="Web developer with four years experience. Passionate about blending technology and creativity. Enjoys building responsive, user-friendly apps and bringing ideas to life."
         links={[
           <MovesLink

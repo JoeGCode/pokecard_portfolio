@@ -7,7 +7,6 @@ async function Page() {
   const response = await fetch(
     "https://joegcode.github.io/api/portfolio/data/projects.json"
   );
-  console.log(response);
   let projects: Project[] = await response.json();
   // This site will have ID of 5
   projects = projects.filter((project) => project.id !== 5);

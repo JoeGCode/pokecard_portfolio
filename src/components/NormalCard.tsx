@@ -2,8 +2,9 @@
 import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import StarIcon from "./StarIcon";
-import FooterStat from "./NormalCardComponents/FooterStat";
 import { FaStar } from "react-icons/fa";
+import SocialLinks from "./NormalCardComponents/SocialLinks";
+import { SocialLink } from "@/data/types";
 
 type NormalCardType = {
   name: string;
@@ -13,7 +14,7 @@ type NormalCardType = {
   links: JSX.Element[];
   number?: string;
   aboutText: string;
-  showSocialLinks?: boolean;
+  socialLinks?: SocialLink[];
 };
 
 function NormalCard({
@@ -24,11 +25,13 @@ function NormalCard({
   links,
   number = "001",
   aboutText,
-  showSocialLinks = false,
+  socialLinks = [],
 }: NormalCardType) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shinePos, setShinePos] = useState({ x: 50, y: 50 });
   const cardRef = useRef<HTMLDivElement>(null);
+
+  const showSocialLinks = socialLinks.length > 0;
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -59,7 +62,7 @@ function NormalCard({
   });
   return (
     <div
-      className="w-full max-w-[480px] aspect-[2.5/3.5] scale-90 border-[12px] border-yellow-400 rounded-md flex flex-col bg-gradient-to-br from-purple-900 to-purple-950 text-white font-bold"
+      className="w-full max-w-[480px] aspect-[2.5/3.5] border-[12px] border-yellow-400 rounded-md flex flex-col bg-gradient-to-br from-purple-900 to-purple-950 text-white font-bold"
       ref={cardRef}
       style={{
         transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
@@ -73,7 +76,7 @@ function NormalCard({
         }}
       />
       {/* Card Header */}
-      <div className="w-full p-4 pl-12 sm:pl-16 flex justify-between items-center relative">
+      <div className="w-full px-4 py-2 pl-12 sm:pl-16 flex justify-between items-center relative">
         <div>
           <div className="absolute -top-1 -left-1 p-1 rounded-sm bg-gray-500">
             BASIC
@@ -110,13 +113,7 @@ function NormalCard({
         {links.map((link) => link)}
       </div>
       {/* Weakness/Resistance/Retreat */}
-      {showSocialLinks && (
-        <div className="w-full p-2 bg-gray-200 grid grid-cols-3 text-black text-sm">
-          <FooterStat numberOfStars={1} title="weakness" />
-          <FooterStat numberOfStars={1} title="resistance" />
-          <FooterStat numberOfStars={2} title="retreat" />
-        </div>
-      )}
+      {showSocialLinks && <SocialLinks links={socialLinks} />}
       <p
         className={`w-full p-2 font-light ${
           showSocialLinks ? "text-sm" : "text-base"

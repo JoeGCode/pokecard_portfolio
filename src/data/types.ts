@@ -13,3 +13,11 @@ export type Project = {
   githubLink: string;
   description: string;
 };
+
+export type SocialLink = {
+  id: number;
+  name: string;
+  type: string;
+  link: string;
+  color: string;
+};

@@ -6,7 +6,6 @@ async function Page() {
   const response = await fetch(
     "https://joegcode.github.io/api/portfolio/data/skills.json"
   );
-  console.log(response);
   const skills: Skill[] = await response.json();
   return (
     <section className="flex flex-col gap-8 h-full w-full items-center justify-center text-center text-white p-8 xs:p-4 max-w-screen-lg">

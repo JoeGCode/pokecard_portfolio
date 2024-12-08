@@ -54,7 +54,7 @@ function SkillCard({ skill }: { skill: Skill }) {
       <div className="border-[12px] border-yellow-400 rounded-md aspect-[2.5/3.5] flex flex-col w-full h-full">
         {/* Header */}
         <div className="w-full flex-1 flex justify-start items-center px-6 bg-gray-600 text-transparent font-bold text-3xl xs:text-2xl">
-          <span className="text-black text-lg">{skill.name}</span>
+          <span className="text-white text-xl">{skill.name}</span>
         </div>
         {/* Main */}
         <div
