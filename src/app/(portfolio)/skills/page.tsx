@@ -4,7 +4,8 @@ import React from "react";
 
 async function Page() {
   const response = await fetch(
-    "https://joegcode.github.io/api/portfolio/data/skills.json"
+    "https://joegcode.github.io/api/portfolio/data/skills.json",
+    { cache: "no-store" }
   );
   const skills: Skill[] = await response.json();
   return (
