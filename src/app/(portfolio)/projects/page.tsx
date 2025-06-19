@@ -16,14 +16,14 @@ async function Page() {
       <h2 className="text-xl">CHECK OUT SOME OF THE THINGS I HAVE BUILT:</h2>
       <div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 mx-auto">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <NormalCard
               key={project.id}
               name={project.name}
               image={project.image}
-              hp={30 * project.id}
+              hp={(index + 3) * 10}
               aboutText={project.description}
-              number={(project.id + 1).toString().padStart(3, "0")}
+              number={(index + 2).toString().padStart(3, "0")}
               links={[
                 <MovesLink
                   numberOfStars={1}

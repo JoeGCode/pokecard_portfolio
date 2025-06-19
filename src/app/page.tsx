@@ -1,7 +1,7 @@
 import NormalCard from "@/components/NormalCard";
-import image from "../../public/images/hero_image.png";
 import MovesLink from "@/components/NormalCardComponents/MovesLink";
 import { SocialLink } from "@/data/types";
+import image from "../../public/images/hero_image.png";
 
 export default async function Home() {
   const response = await fetch(
@@ -12,7 +12,7 @@ export default async function Home() {
     <div className="w-full flex flex-1 flex-col items-center justify-center p-2 overflow-hidden">
       <NormalCard
         name="Joe Garofano"
-        hp={100}
+        hp={360}
         image={image}
         number="001"
         showMiniStats={true}
