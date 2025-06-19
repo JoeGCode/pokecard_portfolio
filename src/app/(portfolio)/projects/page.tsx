@@ -1,7 +1,6 @@
 import NormalCard from "@/components/NormalCard";
 import MovesLink from "@/components/NormalCardComponents/MovesLink";
 import { Project } from "@/data/types";
-import React from "react";
 
 async function Page() {
   const response = await fetch(
@@ -9,8 +8,8 @@ async function Page() {
     { cache: "no-store" }
   );
   let projects: Project[] = await response.json();
-  // This site will have ID of 5
-  projects = projects.filter((project) => project.id !== 5);
+  // This site will have ID of 2
+  projects = projects.filter((project) => project.id !== 2);
   return (
     <section className="flex flex-col gap-8 h-full w-full items-center justify-center text-center text-white ">
       <h1 className="text-2xl">PROJECTS</h1>
