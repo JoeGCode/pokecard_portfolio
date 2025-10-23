@@ -5,7 +5,12 @@ import image from "../../public/images/hero_image.png";
 
 export default async function Home() {
   const response = await fetch(
-    "https://joegcode.github.io/api/portfolio/data/socialLinks.json"
+    "https://joegcode.github.io/api/portfolio/data/socialLinks.json",
+    {
+      next: {
+        revalidate: 60 * 60,
+      },
+    }
   );
   const links: SocialLink[] = await response.json();
   return (

@@ -5,7 +5,11 @@ import { Project } from "@/data/types";
 async function Page() {
   const response = await fetch(
     "https://joegcode.github.io/api/portfolio/data/projects.json",
-    { cache: "no-store" }
+    {
+      next: {
+        revalidate: 60 * 60,
+      },
+    }
   );
   let projects: Project[] = await response.json();
   // This site will have ID of 2

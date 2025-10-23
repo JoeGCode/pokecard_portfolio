@@ -1,11 +1,14 @@
 import SkillCard from "@/components/SkillCard";
 import { Skill } from "@/data/types";
-import React from "react";
 
 async function Page() {
   const response = await fetch(
     "https://joegcode.github.io/api/portfolio/data/skills.json",
-    { cache: "no-store" }
+    {
+      next: {
+        revalidate: 60 * 60,
+      },
+    }
   );
   const skills: Skill[] = await response.json();
   return (
