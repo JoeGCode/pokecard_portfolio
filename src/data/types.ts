@@ -3,6 +3,7 @@ export type Skill = {
   name: string;
   imageURL: string;
   color: string;
+  showOnSkillPage: boolean;
 };
 
 export type Project = {
@@ -12,6 +13,7 @@ export type Project = {
   demoLink: string;
   githubLink: string;
   description: string;
+  skillIds: number[];
 };
 
 export type SocialLink = {

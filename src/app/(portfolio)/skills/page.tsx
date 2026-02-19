@@ -8,9 +8,10 @@ async function Page() {
       next: {
         revalidate: 60 * 60,
       },
-    }
+    },
   );
   const skills: Skill[] = await response.json();
+  const skillsToShow = skills.filter((skill) => skill.showOnSkillPage);
   return (
     <section className="flex flex-col gap-8 h-full w-full items-center justify-center text-center text-white">
       <h1 className="text-2xl">SKILLS</h1>
@@ -19,7 +20,7 @@ async function Page() {
       </h2>
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 mx-auto">
-          {skills.map((skill) => (
+          {skillsToShow.map((skill) => (
             <SkillCard key={skill.id} skill={skill} />
           ))}
         </div>
