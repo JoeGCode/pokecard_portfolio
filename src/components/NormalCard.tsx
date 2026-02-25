@@ -1,10 +1,10 @@
 "use client";
+import { Skill, SocialLink } from "@/data/types";
 import Image, { StaticImageData } from "next/image";
-import React, { useEffect, useRef, useState } from "react";
-import StarIcon from "./StarIcon";
+import { useEffect, useRef, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import SocialLinks from "./NormalCardComponents/SocialLinks";
-import { SocialLink } from "@/data/types";
+import StarIcon from "./StarIcon";
 
 type NormalCardType = {
   name: string;
@@ -15,6 +15,7 @@ type NormalCardType = {
   number?: string;
   aboutText: string;
   socialLinks?: SocialLink[];
+  projectSkills?: Skill[];
 };
 
 function NormalCard({
@@ -26,12 +27,14 @@ function NormalCard({
   number = "001",
   aboutText,
   socialLinks = [],
+  projectSkills = [],
 }: NormalCardType) {
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [shinePos, setShinePos] = useState({ x: 50, y: 50 });
   const cardRef = useRef<HTMLDivElement>(null);
 
   const showSocialLinks = socialLinks.length > 0;
+  const showProjectSkills = projectSkills.length > 0;
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -121,6 +124,28 @@ function NormalCard({
       >
         {aboutText}
       </p>
+      {showProjectSkills && (
+        <div className="w-full bg-gray-200 grid grid-flow-col auto-cols-fr gap-4 overflow-x-auto p-1 mt-2">
+          {projectSkills.map((skill) => (
+            <div
+              key={skill.name}
+              title={skill.name}
+              className="w-8 h-8 mx-auto p-1 rounded-full flex justify-center items-center overflow-hidden"
+              style={{
+                background: `radial-gradient(#fff, ${skill.color}, #000)`,
+              }}
+            >
+              <Image
+                src={skill.imageURL}
+                alt={`${skill.name} icon`}
+                className="w-full h-full rounded-full object-cover"
+                width={200}
+                height={200}
+              />
+            </div>
+          ))}
+        </div>
+      )}
       <div className="w-full flex-1 px-2 flex justify-between items-end text-xs">
         <div className="inline-flex items-center justify-center gap-1">
           <div className="bg-black text-white p-[1px]">DEV</div>
